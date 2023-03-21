@@ -28,15 +28,15 @@ export async function getStaticProps() {
     }
 }
 
-export async function getStaticProps() {
-    const res = await fetch('http://localhost:3000')
-    headerValue = response.headers.get('X-Flag-Header')
-    console.log(headerValue)
-    const data2 = await res.json()
+// export async function getStaticProps() {
+//     const res = await fetch('http://localhost:3000')
+//     headerValue = response.headers.get('X-Flag-Header')
+//     console.log(headerValue)
+//     const data2 = await res.json()
   
-    return {
-      props: {
-        data2
-      }
-    }
-  }
+//     return {
+//       props: {
+//         data2
+//       }
+//     }
+//   }

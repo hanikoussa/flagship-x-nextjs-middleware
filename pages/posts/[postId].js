@@ -20,16 +20,16 @@ export default function Post({ post }) {
 
 //Inform NextJs what possible values that postId.js page should be staticly generated for
 export async function getStaticPaths() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
-    const data = await response.json()
+    // const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    // const data = await response.json()
 
-    const paths = data.map(post => {
-        return {
-            params: {
-                postId: `${post.id}`
-            }
-        }
-    })
+    // const paths = data.map(post => {
+    //     return {
+    //         params: {
+    //             postId: `${post.id}`
+    //         }
+    //     }
+    // })
 
     return {
         paths:[
@@ -59,6 +59,13 @@ export async function getStaticProps(context) {
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`
     )
     const data = await response.json()
+    if (!data.id){
+        return {
+            notFound: true
+        }
+    }
+
+    console.log(`Generating Page for /posts/${params.postId}`)
     return {
         props: {
             post: data
