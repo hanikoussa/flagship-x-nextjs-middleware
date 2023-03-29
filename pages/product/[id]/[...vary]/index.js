@@ -1,21 +1,5 @@
-export default function ProductPage({ id, theVariation }) {
+import { useRouter } from "next/router"
+import {fsPage, getStaticPaths,getStaticProps} from "../index.js"
 
-  return (
-    <>
-      <h1>Hello World {id}</h1>
-      <h1>variation: {theVariation} </h1>
-    </>
-  )
-}
-
-export async function getServerSideProps(context) {
-  const { params } = context
-  console.log(params)
-
-  return {
-    props: {
-      id: params.id,
-      theVariation: params.vary
-    },
-  }
-}
+export default fsPage;
+export {getStaticPaths,getStaticProps};

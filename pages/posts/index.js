@@ -3,6 +3,7 @@ import Link from "next/link"
 export default function Posts({ posts }) {
 
     return <>
+        <Link href='/'>  Home  </Link>
         <h1>Posts list</h1> {
             posts.map(post => {
                 return (
@@ -26,7 +27,7 @@ export async function getStaticProps() {
     const data = await response.json()
     return {
         props: {
-            posts: data.slice(0,3)
+            posts: data.slice(0, 3)
         }
     }
 }

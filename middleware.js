@@ -1,9 +1,6 @@
 // middleware.ts
 import { NextResponse } from 'next/server';
 
-//const legacyPrefixes = ['/product/']
-
-
 export default async function middleware(request) {
   const pathname = request.nextUrl.pathname;
   var fsCombination="";
@@ -47,6 +44,6 @@ export default async function middleware(request) {
 }
 
 export const config = {
-  //matcher: '/product/[0-9]{1,}'
-  matcher: '/product/1'
+  matcher: '/product/([0-9]{1,})'
+  //matcher: '/product/1'
 }

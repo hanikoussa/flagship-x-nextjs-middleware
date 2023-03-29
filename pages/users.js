@@ -1,9 +1,11 @@
 import User from "../components/user"
+import Link from 'next/link'
 
 export default function UserList({ users, data2 }) {
     console.log(data2)
     return (
         <>
+            <Link href='/'>  Home  </Link>
             <h1>List of users</h1> {
                 users.map(user => {
                     return (
