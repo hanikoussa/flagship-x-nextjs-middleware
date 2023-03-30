@@ -1,5 +1,47 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+The goal is to implement Flagship, a fullstack tool that does both experimentation and feature management, on a nextJs stack that is using ISR. I chose ISR because we still need to create static pages after built. But we also need to use it per-page basis, without needing to rebuild the entire site.
+
+A visitor is defined with Visitor Id and context. Then we let Flagship take a decision based on those two factors what are the Flagship campaigns that that visitor is assigned to. We proceed by collecting the Campaign Id which is an Id that represents the campaign a visitor is assigned to. and the Visitor Id, an Id that represents the Variation that visitor gor allocaton to in a specific campaign.
+
+```Javascript
+fetch("https://decision.flagship.io/v2/c440fvjlpl3hr8jt1cng/campaigns", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'IbbExpNaopmSkFjFsljlPrJUihnDFbFjeszoBqdp'
+        },
+        body: JSON.stringify({
+          visitor_id: "YOUR_VISITOR_ID",
+          context: {
+              
+          },
+          // GDPR compliance. See https://developers.flagship.io/docs/decision-api/v2#visitor-consent for details
+          visitor_consent: true,
+          // For the Decision API to trigger a campaign activation hit, use
+          trigger_hit: true,
+          // Optional : see https://developers.flagship.io/docs/decision-api/v2#decision-group for more details
+          decision_group: null
+        })
+  })
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
+
+Calling Flagship API will for 
+
+Middleware allows you to run code before a request is completed, then based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response headers, or responding directly.
+
+## Startup
+To get started, clone this repository and install the dependencies:
+
+```bash
+git clone https://github.com/hanikoussa/posts-nextjs.git
+cd posts-nextjs
+npm install
+```
+
 ## Getting Started
 
 First, run the development server:
