@@ -2,8 +2,6 @@
 import { NextResponse } from 'next/server';
 
 export default async function middleware(request) {
-  const envId = process.env.FLAGSHIP_ENV_ID;
-  console.log("the envid from middleware is "+ envId);
   const pathname = request.nextUrl.pathname;
   console.log(pathname)
   var fsCombination="";
