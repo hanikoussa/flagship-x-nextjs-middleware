@@ -2,7 +2,7 @@ import User from "../components/user"
 import Link from 'next/link'
 
 export default function UserList({ users, data2 }) {
-    console.log(data2)
+    //console.log(data2)
     return (
         <>
             <Link href='/'>  Home  </Link>

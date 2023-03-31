@@ -2,7 +2,6 @@ import { useRouter } from "next/router"
 import Link from 'next/link'
 
 export default function ProductPage({ product }) {
-  console.log(product)
 
   const router = useRouter()
 
@@ -35,14 +34,13 @@ export async function getStaticPaths() {
     //false -> any other path will result in 404
     //true -> loading page for fetching new post
     //blocking -> no loading page, takes time to fetch the page
-    fallback: 'blocking'
+    fallback: true
 
   }
 }
 
 export async function getStaticProps(context) {
   const { params } = context
-  console.log(params)
   const response = await fetch(`http://localhost:4000/products/${params.id}`)
   const data = await response.json()
 

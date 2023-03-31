@@ -65,8 +65,6 @@ export async function getStaticProps(context) {
             notFound: true
         }
     }
-
-    console.log(`Generating Page for /posts/${params.postId}`)
     return {
         props: {
             post: data

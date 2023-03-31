@@ -14,8 +14,6 @@ import { FlagshipProvider } from "@flagship.io/react-sdk";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-
-
   return (
 
     <>

@@ -2,9 +2,11 @@
 import { NextResponse } from 'next/server';
 
 export default async function middleware(request) {
+  const envId = process.env.NEXT_PUBLIC_FLAGSHIP_ENV_ID;
+  console.log(envId);
   const pathname = request.nextUrl.pathname;
-  var fsCombination="";
   console.log(pathname)
+  var fsCombination="";
 
     const res = await fetch("https://decision.flagship.io/v2/c1hh9b4josi04hbueq00/campaigns", {
       method: 'POST',
@@ -29,11 +31,9 @@ export default async function middleware(request) {
     const data = await res.json();
     const fsCampaigns = data.campaigns
     const result = fsCampaigns.map(combination => ({ campaignId: combination.id, varationId: combination.variation.id }))
-    console.log(result)
     for (let i = 0; i < result.length; i++) {
       fsCombination += result[i].campaignId + ":" + result[i].varationId + "|"
     }
-    console.log(fsCombination)
     return NextResponse.rewrite(new URL(`${pathname}/${fsCombination}`, request.url))
   
 
