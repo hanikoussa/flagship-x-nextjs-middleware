@@ -12,14 +12,14 @@ import { FlagshipProvider } from "@flagship.io/react-sdk";
 
 
 const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
+  
   return (
 
     <>
       <FlagshipProvider
-        envId="c1hh9b4josi04hbueq00"
-        apiKey="54KlQahbX798pMZPLGuOX61J4JVvCefY75EnzQhR"
+        envId= {process.env.NEXT_PUBLIC_FLAGSHIP_ENVID}
+        apiKey={process.env.NEXT_PUBLIC_FLAGSHIP_APIKEY}
         visitorData={{
           id: "hani",
           context: {
